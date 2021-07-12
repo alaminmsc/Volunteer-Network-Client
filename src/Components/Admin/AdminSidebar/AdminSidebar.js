@@ -7,7 +7,9 @@ import logo from '../../../images/logos/logo.png';
 const AdminSidebar = () => {
     return (
         <div>
+            <Link to="/">
             <img src={logo} style={{width:'250px'}}></img>
+            </Link>
             <ul className="pt-5">
                 <Link to="/adminEventList" style={{listStyle:'none'}}><li><FontAwesomeIcon icon={faUserFriends}></FontAwesomeIcon> Volunteer List</li></Link>
                 <Link to="/adminAddEvent">

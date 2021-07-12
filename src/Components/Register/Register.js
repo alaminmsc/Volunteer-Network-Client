@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { UserContext } from '../../App';
+import logo from '../../images/logos/logo.png';
 
 const Register = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const {name} = useParams();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
@@ -24,13 +27,16 @@ const Register = () => {
     return (
         <div className="container">
             <div style={{width:'70%', margin:'auto'}} className="text-center">
-                <h2>Register as a Volunteer</h2>
+                <Link to="/">
+                <img src={logo} alt="" className="my-2 py-1" width="180px"></img>
+                </Link>
+                <h3>Register as a Volunteer</h3>
                 <br></br>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" {...register("name", { required: true })} class="form-control" placeholder="Enter your name" />
+                <input type="text" {...register("name", { required: true })} class="form-control" value={loggedInUser.userName} />
                 {errors.name && <span>This field is required</span>}
                 <br></br>
-                <input type="email" {...register("email", { required: true })} class="form-control" placeholder="Enter your email"/>
+                <input type="email" {...register("email", { required: true })} class="form-control" value={loggedInUser.email}/>
                 {errors.email && <span>This field is required</span>}
                 <br></br>
                 <input class="form-control" type="date" {...register("date", { required: true })}/>

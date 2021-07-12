@@ -8,7 +8,7 @@ const Header = () => {
             <Navbar></Navbar>
             <div className="search-section">
                 <h1 className="text-center">I GROW BY HELPING PEOPLE in NEED.</h1>
-                <div className="d-flex align-item-center justify-content-center mt-4">
+                <div className="d-flex align-item-center justify-content-center">
                 <input type="text" placeholder="Search" className="search-input"></input>
                 <input type="submit" className="btn btn-primary" />
                 </div>

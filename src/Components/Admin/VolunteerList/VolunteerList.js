@@ -1,10 +1,12 @@
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../../App';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 
 const RegisterList = () => {
     const [volList, setVolList] = useState([]);
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     
     useEffect(()=>{},[
         fetch('http://localhost:5000/getRegisterList')
@@ -21,7 +23,7 @@ const RegisterList = () => {
                 <div className="col-md-9">
                     <div className="d-flex justify-content-between my-3">
                         <h4>Event List</h4>
-                        <h4>User</h4>
+                        <h4>{loggedInUser.userName}</h4>
                     </div>
                     <div>
                         <table className="table table-bordered">

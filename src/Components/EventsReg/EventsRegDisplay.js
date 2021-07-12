@@ -3,7 +3,7 @@ import imgOne from '../../images/photos/cleanWater.png';
 import './event.css';
 
 const EventsRegDisplay = (props) => {
-    const {name, date} = props.regEvent;
+    const {title, date} = props.regEvent;
 
     const handleCancel= () => {
             document.getElementById('event').style.display='none';
@@ -16,7 +16,7 @@ const EventsRegDisplay = (props) => {
                 <img src={imgOne} alt="" width="180px" height="180px"></img>
             </div>
             <div className="mx-4">
-                <h3>{name}</h3>
+                <h3>{title}</h3>
                 <h6>{date}</h6>
                 <br></br>
                 <button className="btn btn-secondary ms-5" onClick={handleCancel}>Cancel</button>

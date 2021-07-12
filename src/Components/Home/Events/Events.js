@@ -3,6 +3,7 @@ import Child from '../../../images/photos/refuseShelter.png';
 import riverClean from '../../../images/photos/riverClean.png';
 import cleanPark from '../../../images/photos/clearnPark.png';
 import EventsDisplay from './EventsDisplay';
+import './Events.css';
 
 
 const Events = () => {
@@ -16,12 +17,14 @@ const Events = () => {
     },[]);
 
     return (
+        <div className="event-section">
         <div className="container">
             <div className="row d-flex flex-wrap">
             {
                 events.map(event => <EventsDisplay event={event}></EventsDisplay>)
             }
             </div>
+        </div>
         </div>
     );
 };

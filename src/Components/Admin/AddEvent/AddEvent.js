@@ -1,12 +1,14 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { UserContext } from '../../../App';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 
 const AddEvent = () => {
     const { register,handleSubmit, watch, formState: { errors } } = useForm();
     //for file upload
     const [imgageURL, setImgageURL] = useState(null);
+    const [loggedInUser,setLoggedInUser] = useContext(UserContext);
 
     const handleImageUpload = (e)=> {
         console.log(e.target.files[0]);
@@ -40,8 +42,8 @@ const AddEvent = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
-            alert('Successfully Submitted')
+            // console.log(data);
+            data && alert('Successfully Submitted')
         })
         .catch(error => console.log(error))
     };
@@ -55,7 +57,7 @@ const AddEvent = () => {
                 <div className="col-md-9 my-2">
                     <div className="d-flex justify-content-between">
                         <h4>Event List</h4>
-                        <h4>User</h4>
+                        <h4>{loggedInUser.userName}</h4>
                     </div>
                 <form onSubmit={handleSubmit(onSubmit)} className="w-70 px-5 py-5" style={{backgroundColor:'gray'}}>
                     <div className="d-flex">

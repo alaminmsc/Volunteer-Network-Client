@@ -12,6 +12,7 @@ import AddEvent from './Components/Admin/AddEvent/AddEvent';
 import Login from './Components/Login/Login';
 import { createContext, useState } from 'react';
 import EventsReg from './Components/EventsReg/EventsReg';
+import PrivateRoute from '../src/Components/Login/PrivateRoute';
 
 export const UserContext = createContext() ;
 
@@ -22,9 +23,9 @@ function App() {
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
     <Router>
       <Switch>
-        <Route path="/register/:name">
+        <PrivateRoute path="/register/:name">
           <Register></Register>
-        </Route>
+        </PrivateRoute>
         <Route path="/admin">
           <VolunteerList></VolunteerList>
         </Route>
